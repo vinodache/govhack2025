@@ -6,100 +6,212 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
-    #map { height: 600px; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+    #map {
+      height: 100vh;
+      width: 100vw;
+      margin: 0;
+      padding: 0;
+    }
+    #colorBy {
+      position: absolute;
+      z-index: 1000;
+      bottom: 140px;
+      right: 20px;
+      font-size: 24px;
+      padding: 12px 48px 12px 24px;
+      border-radius: 18px;
+      background: #e0f2ff;
+      border: 1.5px solid #b3d8f6;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      outline: none;
+      appearance: none;
+      transition: box-shadow 0.2s;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%2399c2e6" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 18px center;
+      background-size: 24px 24px;
+      cursor: pointer;
+    }
+    .legend {
+      position: absolute;
+      z-index: 1000;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(255,255,255,0.8);
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      line-height: 1.5;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .legend-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .legend-scale {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .legend-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .legend-color {
+      width: 18px;
+      height: 12px;
+      display: inline-block;
+      border: 1px solid #ccc;
+    }
+    .suburb-label {
+      color: #111;
+      font-size: 8px;
+      pointer-events: none;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
   </style>
 </head>
 <body>
   <select id="colorBy">
-    <option value="population">Population</option>
-    <option value="area">Area</option>
-    <option value="density">Density</option>
+    <option value="AllotmentArea">Allotment Area</option>
+    <option value="ExistingDwelling">Existing Dwelling</option>
+    <option value="NewDwellings">New Dwellings</option>
   </select>
   <div id="map"></div>
+  <div id="legend" class="legend"></div>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    var map = L.map('map').setView([-37.8136, 144.9631], 10);
+
+var map = L.map('map').setView([-38.1471, 144.3607], 11);
+// Legend color scales for each metric
+const legendScales = {
+  AllotmentArea: [
+    { label: '> 1,000,000', color: '#800026' },
+    { label: '500,001 – 1,000,000', color: '#BD0026' },
+    { label: '100,001 – 500,000', color: '#E31A1C' },
+    { label: '10,001 – 100,000', color: '#FC4E2A' },
+    { label: '≤ 10,000', color: '#FFEDA0' }
+  ],
+  ExistingDwelling: [
+    { label: '> 60', color: '#084081' },
+    { label: '41 – 60', color: '#0868ac' },
+    { label: '21 – 40', color: '#2b8cbe' },
+    { label: '11 – 20', color: '#4eb3d3' },
+    { label: '≤ 10', color: '#ccebc5' }
+  ],
+  NewDwellings: [
+    { label: '> 200', color: '#54278f' },
+    { label: '101 – 200', color: '#756bb1' },
+    { label: '51 – 100', color: '#9e9ac8' },
+    { label: '11 – 50', color: '#cbc9e2' },
+    { label: '≤ 10', color: '#f2f0f7' }
+  ]
+};
+
+function updateLegend(metric) {
+  const legend = document.getElementById('legend');
+  const scale = legendScales[metric];
+  let html = `<div class="legend-title">${metric.charAt(0).toUpperCase() + metric.slice(1)}</div><div class="legend-scale">`;
+  scale.forEach(item => {
+    html += `<div class="legend-label"><span class="legend-color" style="background:${item.color}"></span>${item.label}</div>`;
+  });
+  html += '</div>';
+  legend.innerHTML = html;
+}
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    // Example population data (replace with your real data)
-    const populationData = {
-      "Suburb A": 5000,
-      "Suburb B": 12000,
-      "Suburb C": 8000
-    };
+
 
     let geojsonLayer;
     let geojsonData;
 
     // Color scales for each metric
-    function getColor(metric, value) {
-      if (metric === 'population') {
-        return value > 10000 ? '#800026' :
-               value > 8000  ? '#BD0026' :
-               value > 5000  ? '#E31A1C' :
-               value > 2000  ? '#FC4E2A' :
-                               '#FFEDA0';
-      } else if (metric === 'area') {
-        return value > 20 ? '#084081' :
-               value > 10 ? '#0868ac' :
-               value > 5  ? '#2b8cbe' :
-               value > 2  ? '#4eb3d3' :
-                            '#ccebc5';
-      } else if (metric === 'density') {
-        return value > 3000 ? '#54278f' :
-               value > 2000 ? '#756bb1' :
-               value > 1000 ? '#9e9ac8' :
-               value > 500  ? '#cbc9e2' :
-                              '#f2f0f7';
-      }
-      return '#ccc';
-    }
+function getColor(metric, value) {
+  if (metric === 'AllotmentArea') {
+    return value > 1000000 ? '#800026' :
+           value > 500000  ? '#BD0026' :
+           value > 100000  ? '#E31A1C' :
+           value > 10000   ? '#FC4E2A' :
+                            '#FFEDA0';
+  } else if (metric === 'ExistingDwelling') {
+    return value > 60 ? '#084081' :
+           value > 40 ? '#0868ac' :
+           value > 20 ? '#2b8cbe' :
+           value > 10 ? '#4eb3d3' :
+                        '#ccebc5';
+  } else if (metric === 'NewDwellings') {
+    return value > 200 ? '#54278f' :
+           value > 100 ? '#756bb1' :
+           value > 50  ? '#9e9ac8' :
+           value > 10  ? '#cbc9e2' :
+                        '#f2f0f7';
+  }
+  return '#ccc';
+}
 
-    function style(feature, metric) {
-      const suburb = feature.properties.name;
-      const area = feature.properties.area || 1; // Avoid division by zero
-      const pop = populationData[suburb] || 0;
-      let value = 0;
-      if (metric === 'population') value = pop;
-      else if (metric === 'area') value = area;
-      else if (metric === 'density') value = pop / area;
-      return {
-        fillColor: getColor(metric, value),
-        weight: 2,
-        opacity: 1,
-        color: 'white',
-        fillOpacity: 0.7
-      };
-    }
+function style(feature, metric) {
+  const props = feature.properties || {};
+  let value = 0;
+  if (metric === 'AllotmentArea') value = props.AllotmentArea || 0;
+  else if (metric === 'ExistingDwelling') value = props.ExistingDwelling || 0;
+  else if (metric === 'NewDwellings') value = props.NewDwellings || 0;
+  return {
+    fillColor: getColor(metric, value),
+    weight: 2,
+    opacity: 1,
+    color: 'white',
+    fillOpacity: 0.7
+  };
+}
 
-    function renderGeoJson(metric) {
-      if (geojsonLayer) map.removeLayer(geojsonLayer);
-      geojsonLayer = L.geoJson(geojsonData, {
-        style: feature => style(feature, metric),
-        onEachFeature: function (feature, layer) {
-          const suburb = feature.properties.name;
-          const area = feature.properties.area || 0;
-          const pop = populationData[suburb] || 0;
-          const density = area ? (pop / area).toFixed(2) : 0;
-          layer.bindPopup(
-            `<b>${suburb}</b><br>Population: ${pop}<br>Area: ${area}<br>Density: ${density}`
-          );
-        }
-      }).addTo(map);
+function renderGeoJson(metric) {
+  if (geojsonLayer) map.removeLayer(geojsonLayer);
+  geojsonLayer = L.geoJson(geojsonData, {
+    style: feature => style(feature, metric),
+    onEachFeature: function (feature, layer) {
+      const props = feature.properties || {};
+      const suburb = props.loc_name ? props.loc_name.toUpperCase() : '';
+      const allotment = props.AllotmentArea || 0;
+      const existing = props.ExistingDwelling || 0;
+      const newd = props.NewDwellings || 0;
+      layer.bindPopup(
+        `<b>${suburb}</b><br>Allotment Area: ${allotment}<br>Existing Dwellings: ${existing}<br>New Dwellings: ${newd}`
+      );
+      layer.bindTooltip(suburb, {
+        permanent: true,
+        direction: "center",
+        className: "suburb-label"
+      });
     }
+  }).addTo(map);
+}
 
-    fetch('suburbs.geojson')
+
+    fetch('suburbs_updated.geojson')
       .then(res => res.json())
       .then(geojson => {
         geojsonData = geojson;
-        renderGeoJson('area');
+        // Get the initial metric from the dropdown value
+        const initialMetric = document.getElementById('colorBy').value;
+        renderGeoJson(initialMetric);
+        updateLegend(initialMetric);
       });
 
     document.getElementById('colorBy').addEventListener('change', function() {
       renderGeoJson(this.value);
+      updateLegend(this.value);
     });
   </script>
 </body>
