@@ -1,0 +1,462 @@
+{
+  "WAURN PONDS": {
+    "AllotmentArea": 1629186.0,
+    "ExistingDwelling": 18.0,
+    "NewDwellings": 11.0
+  },
+  "LARA": {
+    "AllotmentArea": 56330383.0,
+    "ExistingDwelling": 117.0,
+    "NewDwellings": 364.0
+  },
+  "CORIO": {
+    "AllotmentArea": 6305894.0,
+    "ExistingDwelling": 43.0,
+    "NewDwellings": 75.0
+  },
+  "NORLANE": {
+    "AllotmentArea": 329019.0,
+    "ExistingDwelling": 31.0,
+    "NewDwellings": 83.0
+  },
+  "AVALON": {
+    "AllotmentArea": 39646.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 1.0
+  },
+  "GEELONG": {
+    "AllotmentArea": 152445.0,
+    "ExistingDwelling": 42.0,
+    "NewDwellings": 61.0
+  },
+  "OCEAN GROVE": {
+    "AllotmentArea": 698082.0,
+    "ExistingDwelling": 142.0,
+    "NewDwellings": 245.0
+  },
+  "PORTARLINGTON": {
+    "AllotmentArea": 567346.0,
+    "ExistingDwelling": 68.0,
+    "NewDwellings": 55.0
+  },
+  "NORTH GEELONG": {
+    "AllotmentArea": 1233218.0,
+    "ExistingDwelling": 17.0,
+    "NewDwellings": 9.0
+  },
+  "SOUTH GEELONG": {
+    "AllotmentArea": 257534.0,
+    "ExistingDwelling": 6.0,
+    "NewDwellings": 3.0
+  },
+  "MOUNT DUNEED": {
+    "AllotmentArea": 1167281.0,
+    "ExistingDwelling": 26.0,
+    "NewDwellings": 529.0
+  },
+  "LEOPOLD": {
+    "AllotmentArea": 794039.0,
+    "ExistingDwelling": 59.0,
+    "NewDwellings": 157.0
+  },
+  "POINT LONSDALE": {
+    "AllotmentArea": 72260.0,
+    "ExistingDwelling": 29.0,
+    "NewDwellings": 101.0
+  },
+  "GEELONG WEST": {
+    "AllotmentArea": 65099.0,
+    "ExistingDwelling": 57.0,
+    "NewDwellings": 36.0
+  },
+  "FYANSFORD": {
+    "AllotmentArea": 134814.0,
+    "ExistingDwelling": 11.0,
+    "NewDwellings": 46.0
+  },
+  "BARWON HEADS": {
+    "AllotmentArea": 262818.0,
+    "ExistingDwelling": 48.0,
+    "NewDwellings": 36.0
+  },
+  "WANDANA HEIGHTS": {
+    "AllotmentArea": 68804.0,
+    "ExistingDwelling": 12.0,
+    "NewDwellings": 32.0
+  },
+  "HIGHTON": {
+    "AllotmentArea": 320172.0,
+    "ExistingDwelling": 127.0,
+    "NewDwellings": 153.0
+  },
+  "HAMLYN HEIGHTS": {
+    "AllotmentArea": 78314.0,
+    "ExistingDwelling": 35.0,
+    "NewDwellings": 50.0
+  },
+  "ARMSTRONG CREEK": {
+    "AllotmentArea": 1622279.0,
+    "ExistingDwelling": 34.0,
+    "NewDwellings": 1115.0
+  },
+  "CLIFTON SPRINGS": {
+    "AllotmentArea": 172311.0,
+    "ExistingDwelling": 48.0,
+    "NewDwellings": 37.0
+  },
+  "NEWTOWN": {
+    "AllotmentArea": 242383.0,
+    "ExistingDwelling": 107.0,
+    "NewDwellings": 71.0
+  },
+  "EAST GEELONG": {
+    "AllotmentArea": 833123.0,
+    "ExistingDwelling": 28.0,
+    "NewDwellings": 21.0
+  },
+  "MARCUS HILL": {
+    "AllotmentArea": 1428810.0,
+    "ExistingDwelling": 3.0,
+    "NewDwellings": 1.0
+  },
+  "CURLEWIS": {
+    "AllotmentArea": 201404.0,
+    "ExistingDwelling": 23.0,
+    "NewDwellings": 56.0
+  },
+  "ST LEONARDS": {
+    "AllotmentArea": 1415897.0,
+    "ExistingDwelling": 42.0,
+    "NewDwellings": 189.0
+  },
+  "CHARLEMONT": {
+    "AllotmentArea": 560688.0,
+    "ExistingDwelling": 12.0,
+    "NewDwellings": 228.0
+  },
+  "BELMONT": {
+    "AllotmentArea": 271459.0,
+    "ExistingDwelling": 112.0,
+    "NewDwellings": 105.0
+  },
+  "BREAKWATER": {
+    "AllotmentArea": 212363.0,
+    "ExistingDwelling": 7.0,
+    "NewDwellings": 1.0
+  },
+  "ST.LEONARDS": {
+    "AllotmentArea": 348.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 2.0
+  },
+  "HERNE HILL": {
+    "AllotmentArea": 67891.0,
+    "ExistingDwelling": 35.0,
+    "NewDwellings": 28.0
+  },
+  "INDENTED HEAD": {
+    "AllotmentArea": 40226.0,
+    "ExistingDwelling": 20.0,
+    "NewDwellings": 53.0
+  },
+  "BELL PARK": {
+    "AllotmentArea": 161160.0,
+    "ExistingDwelling": 17.0,
+    "NewDwellings": 20.0
+  },
+  "GEELONG NORTH": {
+    "AllotmentArea": 485697.0,
+    "ExistingDwelling": 6.0,
+    "NewDwellings": 1.0
+  },
+  "GROVEDALE": {
+    "AllotmentArea": 924180.0,
+    "ExistingDwelling": 56.0,
+    "NewDwellings": 39.0
+  },
+  "RIPPLESIDE": {
+    "AllotmentArea": 11876.0,
+    "ExistingDwelling": 9.0,
+    "NewDwellings": 3.0
+  },
+  "MANIFOLD HEIGHTS": {
+    "AllotmentArea": 30457.0,
+    "ExistingDwelling": 32.0,
+    "NewDwellings": 15.0
+  },
+  "DRYSDALE": {
+    "AllotmentArea": 14085580.0,
+    "ExistingDwelling": 37.0,
+    "NewDwellings": 102.0
+  },
+  "ANAKIE": {
+    "AllotmentArea": 3460083.0,
+    "ExistingDwelling": 21.0,
+    "NewDwellings": 7.0
+  },
+  "BELLARINE": {
+    "AllotmentArea": 1685851.0,
+    "ExistingDwelling": 4.0,
+    "NewDwellings": 2.0
+  },
+  "THOMSON": {
+    "AllotmentArea": 46993.0,
+    "ExistingDwelling": 13.0,
+    "NewDwellings": 8.0
+  },
+  "WALLINGTON": {
+    "AllotmentArea": 793347.0,
+    "ExistingDwelling": 24.0,
+    "NewDwellings": 5.0
+  },
+  "GEELONG EAST": {
+    "AllotmentArea": 13610.0,
+    "ExistingDwelling": 15.0,
+    "NewDwellings": 1.0
+  },
+  "CONNEWARRE": {
+    "AllotmentArea": 502940.0,
+    "ExistingDwelling": 10.0,
+    "NewDwellings": 17.0
+  },
+  "BELL POST HILL": {
+    "AllotmentArea": 188200.0,
+    "ExistingDwelling": 15.0,
+    "NewDwellings": 12.0
+  },
+  "ST ALBANS PARK": {
+    "AllotmentArea": 876925.0,
+    "ExistingDwelling": 22.0,
+    "NewDwellings": 13.0
+  },
+  "LOVELY BANKS": {
+    "AllotmentArea": 463759.0,
+    "ExistingDwelling": 21.0,
+    "NewDwellings": 35.0
+  },
+  "NEWCOMB": {
+    "AllotmentArea": 71500.0,
+    "ExistingDwelling": 22.0,
+    "NewDwellings": 31.0
+  },
+  "TORQUAY": {
+    "AllotmentArea": 1635.0,
+    "ExistingDwelling": 1.0,
+    "NewDwellings": 2.0
+  },
+  "MOOLAP": {
+    "AllotmentArea": 2487087.0,
+    "ExistingDwelling": 30.0,
+    "NewDwellings": 29.0
+  },
+  "NORTH SHORE": {
+    "AllotmentArea": 87309.0,
+    "ExistingDwelling": 2.0,
+    "NewDwellings": 3.0
+  },
+  "ARMSTRONG CREEK,": {
+    "AllotmentArea": 392.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 1.0
+  },
+  "CERES": {
+    "AllotmentArea": 193035.0,
+    "ExistingDwelling": 2.0,
+    "NewDwellings": 2.0
+  },
+  "LITTLE RIVER": {
+    "AllotmentArea": 2532847.0,
+    "ExistingDwelling": 10.0,
+    "NewDwellings": 2.0
+  },
+  "WHITTINGTON": {
+    "AllotmentArea": 9247.0,
+    "ExistingDwelling": 9.0,
+    "NewDwellings": 8.0
+  },
+  "PORT ARLINGTON": {
+    "AllotmentArea": 0,
+    "ExistingDwelling": 0,
+    "NewDwellings": 0
+  },
+  "MARSHALL": {
+    "AllotmentArea": 68819.0,
+    "ExistingDwelling": 16.0,
+    "NewDwellings": 12.0
+  },
+  "MT DUNEED": {
+    "AllotmentArea": 1654.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 1.0
+  },
+  "DEANSIDE": {
+    "AllotmentArea": 448.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 1.0
+  },
+  "SWAN BAY": {
+    "AllotmentArea": 1453246.0,
+    "ExistingDwelling": 2.0,
+    "NewDwellings": 1.0
+  },
+  "NOBLE PARK": {
+    "AllotmentArea": 0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 0
+  },
+  "BALLIANG": {
+    "AllotmentArea": 140983.0,
+    "ExistingDwelling": 1.0,
+    "NewDwellings": 1.0
+  },
+  "GEELONG SOUTH": {
+    "AllotmentArea": 1709.0,
+    "ExistingDwelling": 1.0,
+    "NewDwellings": 0.0
+  },
+  "BELLPOST HILL": {
+    "AllotmentArea": 0.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 2.0
+  },
+  "THOMSON (GEELONG)": {
+    "AllotmentArea": 17311.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 0.0
+  },
+  "ARMSTORNG CREEK": {
+    "AllotmentArea": 420.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 1.0
+  },
+  "DANDENONG NORTH": {
+    "AllotmentArea": 533.0,
+    "ExistingDwelling": 1.0,
+    "NewDwellings": 0.0
+  },
+  "MOUNT DUNNED": {
+    "AllotmentArea": 392.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 1.0
+  },
+  "DRUMCONDRA": {
+    "AllotmentArea": 3800.0,
+    "ExistingDwelling": 4.0,
+    "NewDwellings": 4.0
+  },
+  "BATESFORD": {
+    "AllotmentArea": 12383.0,
+    "ExistingDwelling": 1.0,
+    "NewDwellings": 0.0
+  },
+  "STAUGHTON VALE": {
+    "AllotmentArea": 829807.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 0.0
+  },
+  "MANNERIM": {
+    "AllotmentArea": 281349.0,
+    "ExistingDwelling": 2.0,
+    "NewDwellings": 1.0
+  },
+  "ST LEONDARDS": {
+    "AllotmentArea": 476.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 1.0
+  },
+  "ARMSTONG CREEK": {
+    "AllotmentArea": 400.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 1.0
+  },
+  "ROCKBANK": {
+    "AllotmentArea": 784.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 2.0
+  },
+  "MAMBOURIN": {
+    "AllotmentArea": 400.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 1.0
+  },
+  "NEWTOWN (GEELONG)": {
+    "AllotmentArea": 2718.0,
+    "ExistingDwelling": 1.0,
+    "NewDwellings": 0.0
+  },
+  "HAMYLN HEIGHTS": {
+    "AllotmentArea": 664.0,
+    "ExistingDwelling": 1.0,
+    "NewDwellings": 0.0
+  },
+  "NEWTON": {
+    "AllotmentArea": 0.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 0.0
+  },
+  "BREAMLEA": {
+    "AllotmentArea": 1612.0,
+    "ExistingDwelling": 1.0,
+    "NewDwellings": 0.0
+  },
+  "MORIAC": {
+    "AllotmentArea": 0,
+    "ExistingDwelling": 0,
+    "NewDwellings": 0
+  },
+  "PT LONSDALE": {
+    "AllotmentArea": 554.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 1.0
+  },
+  "BANNOCKBURN": {
+    "AllotmentArea": 867.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 0.0
+  },
+  "NEWTON (GEELONG)": {
+    "AllotmentArea": 1395.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 0.0
+  },
+  "TOURQUAY": {
+    "AllotmentArea": 800.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 0.0
+  },
+  "GEELONG EAST,": {
+    "AllotmentArea": 398.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 1.0
+  },
+  "GROVEDALE,": {
+    "AllotmentArea": 680.0,
+    "ExistingDwelling": 1.0,
+    "NewDwellings": 0.0
+  },
+  "DANDENONG": {
+    "AllotmentArea": 0.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 0.0
+  },
+  "EAST OCEAN GROVE": {
+    "AllotmentArea": 0,
+    "ExistingDwelling": 1.0,
+    "NewDwellings": 0.0
+  },
+  "WEST LARA": {
+    "AllotmentArea": 510.0,
+    "ExistingDwelling": 1.0,
+    "NewDwellings": 0.0
+  },
+  "CIFTON SPRINGS": {
+    "AllotmentArea": 589.0,
+    "ExistingDwelling": 0.0,
+    "NewDwellings": 1.0
+  },
+  "WARRNAMBOOL": {
+    "AllotmentArea": 0,
+    "ExistingDwelling": 0,
+    "NewDwellings": 0
+  }
+}

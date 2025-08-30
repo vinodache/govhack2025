@@ -86,12 +86,14 @@
     <option value="ExistingDwelling">Existing Dwelling</option>
     <option value="NewDwellings">New Dwellings</option>
   </select>
+  <input type="range" id="yearSlider" min="0" max="4" step="1" value="0" style="position:absolute;z-index:1000;bottom:100px;right:20px;width:220px;">
+  <span id="yearLabel" style="position:absolute;z-index:1000;bottom:80px;right:20px;font-size:18px;background:#fff;padding:2px 10px;border-radius:8px;">2025</span>
   <div id="map"></div>
   <div id="legend" class="legend"></div>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
 
-var map = L.map('map').setView([-38.1471, 144.3607], 11);
+var map = L.map('map').setView([-38.1471, 144.3607], 6);
 // Legend color scales for each metric
 const legendScales = {
   AllotmentArea: [
@@ -134,8 +136,10 @@ function updateLegend(metric) {
 
 
 
-    let geojsonLayer;
-    let geojsonData;
+  let geojsonLayer;
+  let geojsonData;
+  const years = [2025, 2023, 2022, 2021, 2020];
+  let currentYear = years[0];
 
     // Color scales for each metric
 function getColor(metric, value) {
@@ -161,31 +165,36 @@ function getColor(metric, value) {
   return '#ccc';
 }
 
-function style(feature, metric) {
+function style(feature, metric, year) {
   const props = feature.properties || {};
   let value = 0;
-  if (metric === 'AllotmentArea') value = props.AllotmentArea || 0;
-  else if (metric === 'ExistingDwelling') value = props.ExistingDwelling || 0;
-  else if (metric === 'NewDwellings') value = props.NewDwellings || 0;
+  if (props.date && props.date[year]) {
+    if (metric === 'AllotmentArea') value = props.date[year].AllotmentArea || 0;
+    else if (metric === 'ExistingDwelling') value = props.date[year].ExistingDwelling || 0;
+    else if (metric === 'NewDwellings') value = props.date[year].NewDwellings || 0;
+  }
   return {
     fillColor: getColor(metric, value),
     weight: 2,
     opacity: 1,
-    color: 'white',
+    color: 'black',
     fillOpacity: 0.7
   };
 }
 
-function renderGeoJson(metric) {
+function renderGeoJson(metric, year) {
   if (geojsonLayer) map.removeLayer(geojsonLayer);
   geojsonLayer = L.geoJson(geojsonData, {
-    style: feature => style(feature, metric),
+    style: feature => style(feature, metric, year),
     onEachFeature: function (feature, layer) {
       const props = feature.properties || {};
       const suburb = props.loc_name ? props.loc_name.toUpperCase() : '';
-      const allotment = props.AllotmentArea || 0;
-      const existing = props.ExistingDwelling || 0;
-      const newd = props.NewDwellings || 0;
+      let allotment = 0, existing = 0, newd = 0;
+      if (props.date && props.date[year]) {
+        allotment = props.date[year].AllotmentArea || 0;
+        existing = props.date[year].ExistingDwelling || 0;
+        newd = props.date[year].NewDwellings || 0;
+      }
       layer.bindPopup(
         `<b>${suburb}</b><br>Allotment Area: ${allotment}<br>Existing Dwellings: ${existing}<br>New Dwellings: ${newd}`
       );
@@ -199,19 +208,30 @@ function renderGeoJson(metric) {
 }
 
 
-    fetch('suburbs_updated.geojson')
+    fetch('suburbs_updated_with_dates.geojson')
       .then(res => res.json())
       .then(geojson => {
         geojsonData = geojson;
-        // Get the initial metric from the dropdown value
+        // Get the initial metric and year
         const initialMetric = document.getElementById('colorBy').value;
-        renderGeoJson(initialMetric);
+        const initialYear = years[document.getElementById('yearSlider').value];
+        currentYear = initialYear;
+        renderGeoJson(initialMetric, String(initialYear));
         updateLegend(initialMetric);
       });
 
     document.getElementById('colorBy').addEventListener('change', function() {
-      renderGeoJson(this.value);
+      renderGeoJson(this.value, String(currentYear));
       updateLegend(this.value);
+    });
+
+    document.getElementById('yearSlider').addEventListener('input', function() {
+      const yearIdx = parseInt(this.value, 10);
+      const year = years[yearIdx];
+      currentYear = year;
+      document.getElementById('yearLabel').textContent = year;
+      const metric = document.getElementById('colorBy').value;
+      renderGeoJson(metric, String(year));
     });
   </script>
 </body>
