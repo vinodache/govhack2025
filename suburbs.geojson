@@ -1,0 +1,62 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Suburb A",
+        "area": 3.5
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [144.95, -37.80],
+            [144.96, -37.80],
+            [144.96, -37.81],
+            [144.95, -37.81],
+            [144.95, -37.80]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Suburb B",
+        "area": 7.2
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [144.97, -37.82],
+            [144.98, -37.82],
+            [144.98, -37.83],
+            [144.97, -37.83],
+            [144.97, -37.82]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Suburb C",
+        "area": 12.1
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [144.99, -37.84],
+            [145.00, -37.84],
+            [145.00, -37.85],
+            [144.99, -37.85],
+            [144.99, -37.84]
+          ]
+        ]
+      }
+    }
+  ]
+}

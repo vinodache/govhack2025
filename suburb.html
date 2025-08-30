@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Suburb Population Map</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map { height: 600px; }
+  </style>
+</head>
+<body>
+  <select id="colorBy">
+    <option value="population">Population</option>
+    <option value="area">Area</option>
+    <option value="density">Density</option>
+  </select>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    var map = L.map('map').setView([-37.8136, 144.9631], 10);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Example population data (replace with your real data)
+    const populationData = {
+      "Suburb A": 5000,
+      "Suburb B": 12000,
+      "Suburb C": 8000
+    };
+
+    let geojsonLayer;
+    let geojsonData;
+
+    // Color scales for each metric
+    function getColor(metric, value) {
+      if (metric === 'population') {
+        return value > 10000 ? '#800026' :
+               value > 8000  ? '#BD0026' :
+               value > 5000  ? '#E31A1C' :
+               value > 2000  ? '#FC4E2A' :
+                               '#FFEDA0';
+      } else if (metric === 'area') {
+        return value > 20 ? '#084081' :
+               value > 10 ? '#0868ac' :
+               value > 5  ? '#2b8cbe' :
+               value > 2  ? '#4eb3d3' :
+                            '#ccebc5';
+      } else if (metric === 'density') {
+        return value > 3000 ? '#54278f' :
+               value > 2000 ? '#756bb1' :
+               value > 1000 ? '#9e9ac8' :
+               value > 500  ? '#cbc9e2' :
+                              '#f2f0f7';
+      }
+      return '#ccc';
+    }
+
+    function style(feature, metric) {
+      const suburb = feature.properties.name;
+      const area = feature.properties.area || 1; // Avoid division by zero
+      const pop = populationData[suburb] || 0;
+      let value = 0;
+      if (metric === 'population') value = pop;
+      else if (metric === 'area') value = area;
+      else if (metric === 'density') value = pop / area;
+      return {
+        fillColor: getColor(metric, value),
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        fillOpacity: 0.7
+      };
+    }
+
+    function renderGeoJson(metric) {
+      if (geojsonLayer) map.removeLayer(geojsonLayer);
+      geojsonLayer = L.geoJson(geojsonData, {
+        style: feature => style(feature, metric),
+        onEachFeature: function (feature, layer) {
+          const suburb = feature.properties.name;
+          const area = feature.properties.area || 0;
+          const pop = populationData[suburb] || 0;
+          const density = area ? (pop / area).toFixed(2) : 0;
+          layer.bindPopup(
+            `<b>${suburb}</b><br>Population: ${pop}<br>Area: ${area}<br>Density: ${density}`
+          );
+        }
+      }).addTo(map);
+    }
+
+    fetch('suburbs.geojson')
+      .then(res => res.json())
+      .then(geojson => {
+        geojsonData = geojson;
+        renderGeoJson('area');
+      });
+
+    document.getElementById('colorBy').addEventListener('change', function() {
+      renderGeoJson(this.value);
+    });
+  </script>
+</body>
+</html>
