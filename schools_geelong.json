@@ -1,0 +1,427 @@
+[
+  {
+    "School_Name": "Sacred Heart College",
+    "longitude": 144.3401453,
+    "latitude": -38.14949635
+  },
+  {
+    "School_Name": "St Ignatius College Geelong",
+    "longitude": 144.5578975,
+    "latitude": -38.18870264
+  },
+  {
+    "School_Name": "St Mary's School",
+    "longitude": 144.362996,
+    "latitude": -38.153187
+  },
+  {
+    "School_Name": "St Patrick's School",
+    "longitude": 144.346041,
+    "latitude": -38.13484
+  },
+  {
+    "School_Name": "St Joseph's College Geelong",
+    "longitude": 144.331863,
+    "latitude": -38.150205
+  },
+  {
+    "School_Name": "St Robert's School",
+    "longitude": 144.343009,
+    "latitude": -38.15641
+  },
+  {
+    "School_Name": "St Margaret's School",
+    "longitude": 144.373926,
+    "latitude": -38.164624
+  },
+  {
+    "School_Name": "St Thomas Aquinas School",
+    "longitude": 144.35882,
+    "latitude": -38.090171
+  },
+  {
+    "School_Name": "Holy Family School",
+    "longitude": 144.338334,
+    "latitude": -38.111101
+  },
+  {
+    "School_Name": "Holy Spirit Parish School",
+    "longitude": 144.329964,
+    "latitude": -38.135809
+  },
+  {
+    "School_Name": "Clonard College",
+    "longitude": 144.330481,
+    "latitude": -38.130078
+  },
+  {
+    "School_Name": "Christ the King School",
+    "longitude": 144.393098,
+    "latitude": -38.166554
+  },
+  {
+    "School_Name": "St Francis Xavier School",
+    "longitude": 144.358129,
+    "latitude": -38.072033
+  },
+  {
+    "School_Name": "Nazareth School",
+    "longitude": 144.330112,
+    "latitude": -38.202516
+  },
+  {
+    "School_Name": "Our Lady Star of the Sea School",
+    "longitude": 144.540157,
+    "latitude": -38.26078
+  },
+  {
+    "School_Name": "St Anthony's School",
+    "longitude": 144.390582,
+    "latitude": -38.015191
+  },
+  {
+    "School_Name": "St Thomas Primary School",
+    "longitude": 144.5561661,
+    "latitude": -38.18801497
+  },
+  {
+    "School_Name": "Clairvaux Catholic School",
+    "longitude": 144.324905,
+    "latitude": -38.185517
+  },
+  {
+    "School_Name": "MacKillop Specialist School",
+    "longitude": 144.3871113,
+    "latitude": -38.17432485
+  },
+  {
+    "School_Name": "St Catherine of Siena Catholic Primary School",
+    "longitude": 144.369447,
+    "latitude": -38.240086
+  },
+  {
+    "School_Name": "Iona College Geelong",
+    "longitude": 144.356711,
+    "latitude": -38.219125
+  },
+  {
+    "School_Name": "Belmont Primary School",
+    "longitude": 144.342099,
+    "latitude": -38.170672
+  },
+  {
+    "School_Name": "Grovedale Primary School",
+    "longitude": 144.347756,
+    "latitude": -38.197643
+  },
+  {
+    "School_Name": "Highton Primary School",
+    "longitude": 144.317085,
+    "latitude": -38.172156
+  },
+  {
+    "School_Name": "Geelong East Primary School",
+    "longitude": 144.382769,
+    "latitude": -38.17551
+  },
+  {
+    "School_Name": "Lara Lake Primary School",
+    "longitude": 144.395642,
+    "latitude": -38.030405
+  },
+  {
+    "School_Name": "St Leonards Primary School",
+    "longitude": 144.714754,
+    "latitude": -38.171835
+  },
+  {
+    "School_Name": "Leopold Primary School",
+    "longitude": 144.464367,
+    "latitude": -38.187261
+  },
+  {
+    "School_Name": "Ashby Primary School",
+    "longitude": 144.347098,
+    "latitude": -38.138556
+  },
+  {
+    "School_Name": "Barwon Heads Primary School",
+    "longitude": 144.487039,
+    "latitude": -38.281189
+  },
+  {
+    "School_Name": "Ceres Primary School",
+    "longitude": 144.266732,
+    "latitude": -38.173549
+  },
+  {
+    "School_Name": "Drysdale Primary School",
+    "longitude": 144.571747,
+    "latitude": -38.169163
+  },
+  {
+    "School_Name": "Newtown Primary School",
+    "longitude": 144.337199,
+    "latitude": -38.145768
+  },
+  {
+    "School_Name": "Anakie Primary School",
+    "longitude": 144.255106,
+    "latitude": -37.912666
+  },
+  {
+    "School_Name": "Moolap Primary School",
+    "longitude": 144.424312,
+    "latitude": -38.170957
+  },
+  {
+    "School_Name": "Chilwell Primary School",
+    "longitude": 144.345381,
+    "latitude": -38.155114
+  },
+  {
+    "School_Name": "Geelong South Primary School",
+    "longitude": 144.358566,
+    "latitude": -38.156945
+  },
+  {
+    "School_Name": "Portarlington Primary School",
+    "longitude": 144.65498,
+    "latitude": -38.115522
+  },
+  {
+    "School_Name": "Ocean Grove Primary School",
+    "longitude": 144.521852,
+    "latitude": -38.263993
+  },
+  {
+    "School_Name": "Wallington Primary School",
+    "longitude": 144.506853,
+    "latitude": -38.217881
+  },
+  {
+    "School_Name": "Manifold Heights Primary School",
+    "longitude": 144.332922,
+    "latitude": -38.135971
+  },
+  {
+    "School_Name": "Tate Street Primary School Geelong",
+    "longitude": 144.379195,
+    "latitude": -38.166053
+  },
+  {
+    "School_Name": "Roslyn Primary School",
+    "longitude": 144.329816,
+    "latitude": -38.174006
+  },
+  {
+    "School_Name": "Herne Hill Primary School",
+    "longitude": 144.332449,
+    "latitude": -38.12936
+  },
+  {
+    "School_Name": "Oberon Primary School",
+    "longitude": 144.34199,
+    "latitude": -38.179439
+  },
+  {
+    "School_Name": "Nelson Park School",
+    "longitude": 144.337703,
+    "latitude": -38.114241
+  },
+  {
+    "School_Name": "Hamlyn Banks Primary School",
+    "longitude": 144.3271,
+    "latitude": -38.11776
+  },
+  {
+    "School_Name": "Rollins Primary School",
+    "longitude": 144.326464,
+    "latitude": -38.10121
+  },
+  {
+    "School_Name": "Bellaire Primary School",
+    "longitude": 144.319773,
+    "latitude": -38.179586
+  },
+  {
+    "School_Name": "Lara Primary School",
+    "longitude": 144.410543,
+    "latitude": -38.015915
+  },
+  {
+    "School_Name": "Fyans Park Primary School",
+    "longitude": 144.326861,
+    "latitude": -38.153799
+  },
+  {
+    "School_Name": "Bell Park North Primary School",
+    "longitude": 144.336022,
+    "latitude": -38.105894
+  },
+  {
+    "School_Name": "Montpellier Primary School",
+    "longitude": 144.316119,
+    "latitude": -38.166268
+  },
+  {
+    "School_Name": "Wangala Primary School",
+    "longitude": 144.339856,
+    "latitude": -38.185711
+  },
+  {
+    "School_Name": "Grovedale West Primary School",
+    "longitude": 144.328948,
+    "latitude": -38.208278
+  },
+  {
+    "School_Name": "Whittington Primary School",
+    "longitude": 144.395007,
+    "latitude": -38.17815
+  },
+  {
+    "School_Name": "Mandama Primary School",
+    "longitude": 144.327883,
+    "latitude": -38.200395
+  },
+  {
+    "School_Name": "Clifton Springs Primary School",
+    "longitude": 144.553141,
+    "latitude": -38.165658
+  },
+  {
+    "School_Name": "Surfside Primary School",
+    "longitude": 144.541661,
+    "latitude": -38.261449
+  },
+  {
+    "School_Name": "Barwon Valley School",
+    "longitude": 144.32804,
+    "latitude": -38.178775
+  },
+  {
+    "School_Name": "Mount Duneed Regional Primary School",
+    "longitude": 144.319678,
+    "latitude": -38.241244
+  },
+  {
+    "School_Name": "Newcomb Primary School",
+    "longitude": 144.394953,
+    "latitude": -38.165163
+  },
+  {
+    "School_Name": "Armstrong Creek School",
+    "longitude": 144.367311,
+    "latitude": -38.232614
+  },
+  {
+    "School_Name": "Hamlyn Views School",
+    "longitude": 144.332374,
+    "latitude": -38.125275
+  },
+  {
+    "School_Name": "Mirripoa Primary School",
+    "longitude": 144.328478,
+    "latitude": -38.224923
+  },
+  {
+    "School_Name": "Grovedale College",
+    "longitude": 144.327441,
+    "latitude": -38.210399
+  },
+  {
+    "School_Name": "Belmont High School",
+    "longitude": 144.330562,
+    "latitude": -38.175654
+  },
+  {
+    "School_Name": "Geelong High School",
+    "longitude": 144.373726,
+    "latitude": -38.153026
+  },
+  {
+    "School_Name": "North Geelong Secondary College",
+    "longitude": 144.340792,
+    "latitude": -38.109956
+  },
+  {
+    "School_Name": "Matthew Flinders Girls Secondary College",
+    "longitude": 144.353208,
+    "latitude": -38.149587
+  },
+  {
+    "School_Name": "Newcomb Secondary College",
+    "longitude": 144.395201,
+    "latitude": -38.171133
+  },
+  {
+    "School_Name": "Oberon High School",
+    "longitude": 144.364137,
+    "latitude": -38.231762
+  },
+  {
+    "School_Name": "Bellarine Secondary College",
+    "longitude": 144.557527,
+    "latitude": -38.190662
+  },
+  {
+    "School_Name": "Geelong English Language School (interim name)",
+    "longitude": 144.33986,
+    "latitude": -38.18571
+  },
+  {
+    "School_Name": "Western Heights Secondary College",
+    "longitude": 144.328058,
+    "latitude": -38.12391
+  },
+  {
+    "School_Name": "Lara Secondary College",
+    "longitude": 144.41157,
+    "latitude": -38.018176
+  },
+  {
+    "School_Name": "Northern Bay P-12 College",
+    "longitude": 144.355709,
+    "latitude": -38.078406
+  },
+  {
+    "School_Name": "Geelong Grammar School",
+    "longitude": 144.399071,
+    "latitude": -38.068817
+  },
+  {
+    "School_Name": "The Geelong College",
+    "longitude": 144.3400898,
+    "latitude": -38.15241839
+  },
+  {
+    "School_Name": "Covenant College",
+    "longitude": 144.317997,
+    "latitude": -38.09719
+  },
+  {
+    "School_Name": "Christian College Geelong",
+    "longitude": 144.313073,
+    "latitude": -38.185241
+  },
+  {
+    "School_Name": "Kardinia International College",
+    "longitude": 144.327997,
+    "latitude": -38.109881
+  },
+  {
+    "School_Name": "Geelong Baptist College",
+    "longitude": 144.330286,
+    "latitude": -38.067137
+  },
+  {
+    "School_Name": "Geelong Lutheran College",
+    "longitude": 144.337067,
+    "latitude": -38.230458
+  },
+  {
+    "School_Name": "Woodline Primary",
+    "longitude": 144.285354,
+    "latitude": -38.171776
+  }
+]

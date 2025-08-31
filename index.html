@@ -23,19 +23,20 @@
       z-index: 1000;
       bottom: 140px;
       right: 20px;
-      font-size: 24px;
-      padding: 12px 48px 12px 24px;
-      border-radius: 18px;
-      background: #e0f2ff;
-      border: 1.5px solid #b3d8f6;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      font-size: 14px;
+      font-family: inherit;
+      padding: 10px 36px 10px 16px;
+      border-radius: 5px;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       outline: none;
       appearance: none;
       transition: box-shadow 0.2s;
       background-image: url('data:image/svg+xml;utf8,<svg fill="%2399c2e6" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
       background-repeat: no-repeat;
-      background-position: right 18px center;
-      background-size: 24px 24px;
+      background-position: right 12px center;
+      background-size: 20px 20px;
       cursor: pointer;
     }
     .legend {
@@ -82,33 +83,94 @@
 </head>
 <body>
   <select id="colorBy">
-    <option value="AllotmentArea">Allotment Area</option>
+    <option value="Disadvantage_Rank">Disadvantage Rank</option>
     <option value="ExistingDwelling">Existing Dwelling</option>
+    <option value="AllotmentArea">Allotment Area</option>
     <option value="NewDwellings">New Dwellings</option>
   </select>
-  <input type="range" id="yearSlider" min="0" max="4" step="1" value="0" style="position:absolute;z-index:1000;bottom:100px;right:20px;width:220px;">
-  <span id="yearLabel" style="position:absolute;z-index:1000;bottom:80px;right:20px;font-size:18px;background:#fff;padding:2px 10px;border-radius:8px;">2025</span>
+  <div id="sliderContainer" style="position:absolute;z-index:1000;bottom:100px;right:20px;display:flex;align-items:center;">
+    <button id="playPauseBtn" style="margin-right:1px;font-size:18px;padding:4px 14px;border-radius:8px;cursor:pointer;background:none;border:none;box-shadow:none;">▶️</button>
+    <input type="range" id="yearSlider" min="0" max="4" step="1" value="0" style="width:220px;">
+  </div>
+  <div style="position:absolute;z-index:1000;bottom:40px;right:20px;width:220px;">
+    <a href="feedback.html" id="feedbackLink" style="display:block;text-align:right;font-size:17px;font-weight:bold;color:#1976d2;text-decoration:underline;">Feedback</a>
+  </div>
+  <div style="position:absolute;z-index:1000;bottom:80px;right:20px;width:220px;display:flex;justify-content:space-between;font-size:14px;color:#333;pointer-events:none;">
+    <span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2025</span>
+  </div>
+  <style>
+    /* Move play button 5px to the left of the slider */
+    #playPauseBtn {
+      right: 245px; /* fallback, will be overridden below */
+    }
+    #yearSlider {
+      right: 20px;
+    }
+    @media (min-width: 0px) {
+      #playPauseBtn {
+        right: calc(220px + 20px + 5px); /* slider width + slider right + 5px gap */
+      }
+    }
+  </style>
+
   <div id="map"></div>
   <div id="legend" class="legend"></div>
+
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
+// Animation controls for year slider
+let playInterval = null;
+const yearSlider = document.getElementById('yearSlider');
+const playPauseBtn = document.getElementById('playPauseBtn');
+function playAnimation() {
+  if (playInterval) return;
+  playPauseBtn.textContent = '⏸️';
+  playInterval = setInterval(() => {
+    let idx = parseInt(yearSlider.value, 10);
+    if (idx < years.length - 1) {
+      yearSlider.value = idx + 1;
+      yearSlider.dispatchEvent(new Event('input'));
+    } else {
+      pauseAnimation();
+    }
+  }, 1000);
+}
+function pauseAnimation() {
+  if (playInterval) {
+    clearInterval(playInterval);
+    playInterval = null;
+    playPauseBtn.textContent = '▶️';
+  }
+}
+playPauseBtn.addEventListener('click', function() {
+  if (playInterval) {
+    pauseAnimation();
+  } else {
+    playAnimation();
+  }
+});
+yearSlider.addEventListener('input', function() {
+  if (parseInt(yearSlider.value, 10) === years.length - 1) {
+    pauseAnimation();
+  }
+});
 
-var map = L.map('map').setView([-38.1471, 144.3607], 6);
+var map = L.map('map').setView([-38.1493, 144.3598], 11);
 // Legend color scales for each metric
 const legendScales = {
   AllotmentArea: [
-    { label: '> 1,000,000', color: '#800026' },
-    { label: '500,001 – 1,000,000', color: '#BD0026' },
-    { label: '100,001 – 500,000', color: '#E31A1C' },
-    { label: '10,001 – 100,000', color: '#FC4E2A' },
-    { label: '≤ 10,000', color: '#FFEDA0' }
+    { label: '> 1,000,000', color: '#084081' },
+    { label: '500,001 – 1,000,000', color: '#0868ac' },
+    { label: '100,001 – 500,000', color: '#2b8cbe' },
+    { label: '10,001 – 100,000', color: '#4eb3d3' },
+    { label: '≤ 10,000', color: '#ccebc5' }
   ],
   ExistingDwelling: [
-    { label: '> 60', color: '#084081' },
-    { label: '41 – 60', color: '#0868ac' },
-    { label: '21 – 40', color: '#2b8cbe' },
-    { label: '11 – 20', color: '#4eb3d3' },
-    { label: '≤ 10', color: '#ccebc5' }
+    { label: '≥ 60', color: '#2166ac' },
+    { label: '40 – 60', color: '#67a9cf' },
+    { label: '20 – 40', color: '#d1e5f0' },
+    { label: '10 – 20', color: '#fddbc7' },
+    { label: '< 10', color: '#b2182b' }
   ],
   NewDwellings: [
     { label: '> 200', color: '#54278f' },
@@ -116,6 +178,12 @@ const legendScales = {
     { label: '51 – 100', color: '#9e9ac8' },
     { label: '11 – 50', color: '#cbc9e2' },
     { label: '≤ 10', color: '#f2f0f7' }
+  ],
+  Disadvantage_Rank: [
+    { label: 'Rank < 200 (Most Disadvantaged)', color: '#b2182b' },
+    { label: '200 ≤ Rank < 1000', color: '#fddbc7' },
+    { label: '1000 ≤ Rank < 2000', color: '#d1e5f0' },
+    { label: 'Rank ≥ 2000 (Most Advantaged)', color: '#2166ac' }
   ]
 };
 
@@ -138,29 +206,40 @@ function updateLegend(metric) {
 
   let geojsonLayer;
   let geojsonData;
-  const years = [2025, 2023, 2022, 2021, 2020];
+  const years = ["2020", "2021", "2022", "2023", "2025"];
   let currentYear = years[0];
 
     // Color scales for each metric
 function getColor(metric, value) {
   if (metric === 'AllotmentArea') {
-    return value > 1000000 ? '#800026' :
-           value > 500000  ? '#BD0026' :
-           value > 100000  ? '#E31A1C' :
-           value > 10000   ? '#FC4E2A' :
-                            '#FFEDA0';
+    return value > 1000000 ? '#084081':
+           value > 500000  ? '#0868ac':
+           value > 100000  ? '#2b8cbe':
+           value > 10000   ? '#4eb3d3':
+                             '#ccebc5';
   } else if (metric === 'ExistingDwelling') {
-    return value > 60 ? '#084081' :
-           value > 40 ? '#0868ac' :
-           value > 20 ? '#2b8cbe' :
-           value > 10 ? '#4eb3d3' :
-                        '#ccebc5';
+    // Match the legend bins for ExistingDwelling
+    if (value === null || value === undefined || value === '' || isNaN(Number(value))) return '#ccc';
+    value = Number(value);
+    if (value >= 60) return '#2166ac'; // Top 20% (Most Advantaged)
+    if (value >= 40) return '#67a9cf'; // 60–80%
+    if (value >= 20) return '#d1e5f0'; // 40–60%
+    if (value >= 10)  return '#fddbc7'; // 20–40%
+    return '#b2182b'; // Bottom 20% (Most Disadvantaged)
   } else if (metric === 'NewDwellings') {
     return value > 200 ? '#54278f' :
            value > 100 ? '#756bb1' :
            value > 50  ? '#9e9ac8' :
            value > 10  ? '#cbc9e2' :
                         '#f2f0f7';
+  } else if (metric === 'Disadvantage_Rank') {
+    // Match the legend bins for Disadvantage_Rank
+    if (value === null || value === undefined || value === '' || isNaN(Number(value))) return '#ccc';
+    value = Number(value);
+    if (value < 200) return '#b2182b'; // Most Disadvantaged
+    if (value < 1000) return '#fddbc7';
+    if (value < 2000) return '#d1e5f0';
+    return '#2166ac'; // Most Advantaged
   }
   return '#ccc';
 }
@@ -168,7 +247,9 @@ function getColor(metric, value) {
 function style(feature, metric, year) {
   const props = feature.properties || {};
   let value = 0;
-  if (props.date && props.date[year]) {
+  if (metric === 'Disadvantage_Rank') {
+    value = props.Disadvantage_rank_VIC || null;
+  } else if (props.date && props.date[year]) {
     if (metric === 'AllotmentArea') value = props.date[year].AllotmentArea || 0;
     else if (metric === 'ExistingDwelling') value = props.date[year].ExistingDwelling || 0;
     else if (metric === 'NewDwellings') value = props.date[year].NewDwellings || 0;
@@ -188,7 +269,10 @@ function renderGeoJson(metric, year) {
     style: feature => style(feature, metric, year),
     onEachFeature: function (feature, layer) {
       const props = feature.properties || {};
-      const suburb = props.loc_name ? props.loc_name.toUpperCase() : '';
+      let suburb = props.loc_name ? props.loc_name.toUpperCase() : '';
+      if (props.Disadvantage_rank_VIC) {
+        suburb += ` (${props.Disadvantage_rank_VIC})`;
+      }
       let allotment = 0, existing = 0, newd = 0;
       if (props.date && props.date[year]) {
         allotment = props.date[year].AllotmentArea || 0;
@@ -208,16 +292,16 @@ function renderGeoJson(metric, year) {
 }
 
 
-    fetch('suburbs_updated_with_dates.geojson')
+    fetch('suburbs_updated_with_dates_latest_with_disadvantage.geojson')
       .then(res => res.json())
       .then(geojson => {
         geojsonData = geojson;
         // Get the initial metric and year
         const initialMetric = document.getElementById('colorBy').value;
-        const initialYear = years[document.getElementById('yearSlider').value];
-        currentYear = initialYear;
-        renderGeoJson(initialMetric, String(initialYear));
-        updateLegend(initialMetric);
+  const initialYear = years[document.getElementById('yearSlider').value];
+  currentYear = initialYear;
+  renderGeoJson(initialMetric, String(initialYear));
+  updateLegend(initialMetric);
       });
 
     document.getElementById('colorBy').addEventListener('change', function() {
@@ -229,10 +313,53 @@ function renderGeoJson(metric, year) {
       const yearIdx = parseInt(this.value, 10);
       const year = years[yearIdx];
       currentYear = year;
-      document.getElementById('yearLabel').textContent = year;
+  // Removed year label update
       const metric = document.getElementById('colorBy').value;
       renderGeoJson(metric, String(year));
     });
+    // Add school markers from schools_geelong.json with custom school icon
+    const schoolIcon = L.icon({
+      iconUrl: 'school-icon.svg',
+      iconSize: [32, 32],
+      iconAnchor: [16, 32], // bottom center
+      popupAnchor: [0, -32]
+    });
+    fetch('schools_geelong.json')
+      .then(res => res.json())
+      .then(schools => {
+        schools.forEach(school => {
+          if (school.latitude && school.longitude) {
+            L.marker([school.latitude, school.longitude], {
+              icon: schoolIcon,
+              title: school.School_Name
+            })
+            .addTo(map)
+            .bindPopup(`<b>${school.School_Name}</b>`);
+          }
+        });
+      });
+
+    // Add hospital markers from Hospital_VIC.json with a red cross icon
+    const hospitalIcon = L.icon({
+      iconUrl: 'hospital-icon.svg',
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -32]
+    });
+    fetch('Data/Hospitals_100_Geelong.json')
+      .then(res => res.json())
+      .then(hospitals => {
+        hospitals.forEach(hospital => {
+          if (hospital.latitude && hospital.longitude) {
+            L.marker([hospital.latitude, hospital.longitude], {
+              icon: hospitalIcon,
+              title: hospital.name
+            })
+            .addTo(map)
+            .bindPopup(`<b>${hospital.name}</b><br>Lat: ${hospital.latitude}<br>Lng: ${hospital.longitude}`);
+          }
+        });
+      });
   </script>
 </body>
 </html>
